@@ -1,0 +1,605 @@
+{
+	"info": {
+		"_postman_id": "72a41360-c586-4be4-be4c-ad367637cc5b",
+		"name": "recruitment-platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22841355"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"companyName\": \"PT Transportasi\",\r\n  \"email\": \"admin@transportasi.com\",\r\n  \"password\": \"Pass123!\",\r\n  \"fullName\": \"John Doe\",\r\n  \"phone\": \"08123456789\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"admin@transportasi.com\",\r\n  \"password\": \"Pass123!\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Recruiter",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYWQwYjJkLTFlZjYtNDM5Yi04OTUwLWZhZjZlNTFjOGU1YSIsInJvbGUiOiJBRE1JTiIsImNvbXBhbnlJZCI6ImY2YmE4Yjk2LWU5ZDMtNDYwOC05YTRiLThjZDg0MDliOGFjNSIsImlhdCI6MTc2ODQ0MjIyMCwiZXhwIjoxNzY4NTI4NjIwfQ.rFHT1GxWnX689wtJNnnmo1xE9wsJRb5bl8JreQf6L9k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"recruiter@transportasi.com\",\r\n  \"password\": \"Pass123!\",\r\n  \"fullName\": \"Jane Hopper\",\r\n  \"role\": \"RECRUITER\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYWQwYjJkLTFlZjYtNDM5Yi04OTUwLWZhZjZlNTFjOGU1YSIsInJvbGUiOiJBRE1JTiIsImNvbXBhbnlJZCI6ImY2YmE4Yjk2LWU5ZDMtNDYwOC05YTRiLThjZDg0MDliOGFjNSIsImlhdCI6MTc2ODQ0MzE4NiwiZXhwIjoxNzY4NTI5NTg2fQ.2WzeY4UCoakjF-4-OYnT9LzhAgSVoq5wVzn0HT1065g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users?page=1&limit=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "First User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYWQwYjJkLTFlZjYtNDM5Yi04OTUwLWZhZjZlNTFjOGU1YSIsInJvbGUiOiJBRE1JTiIsImNvbXBhbnlJZCI6ImY2YmE4Yjk2LWU5ZDMtNDYwOC05YTRiLThjZDg0MDliOGFjNSIsImlhdCI6MTc2ODQ0MzE4NiwiZXhwIjoxNzY4NTI5NTg2fQ.2WzeY4UCoakjF-4-OYnT9LzhAgSVoq5wVzn0HT1065g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users/b761e5be-b644-4e15-8e73-39647ab335a9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"b761e5be-b644-4e15-8e73-39647ab335a9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI4Y2E1MTI5LTFmNGUtNDAyNi04ZTc0LTE2Nzk2ZjZmNWUzNCIsInJvbGUiOiJBRE1JTiIsImNvbXBhbnlJZCI6ImU3NjMxOGE5LWJkZGItNDVlMS05MzYxLThiOWQ2YThkZGQzMCIsImlhdCI6MTc2ODQzOTMyNywiZXhwIjoxNzY4NTI1NzI3fQ.t6qyeCOHV9rt91EDMcP8RIWDQOIeal3-CBFgUmNN714",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users/4ccb7eba-dd8e-4cca-85c7-eda599afaf6c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"4ccb7eba-dd8e-4cca-85c7-eda599afaf6c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Position",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYWQwYjJkLTFlZjYtNDM5Yi04OTUwLWZhZjZlNTFjOGU1YSIsInJvbGUiOiJBRE1JTiIsImNvbXBhbnlJZCI6ImY2YmE4Yjk2LWU5ZDMtNDYwOC05YTRiLThjZDg0MDliOGFjNSIsImlhdCI6MTc2ODQ0MjIyMCwiZXhwIjoxNzY4NTI4NjIwfQ.rFHT1GxWnX689wtJNnnmo1xE9wsJRb5bl8JreQf6L9k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Frontend Developer Intern\",\r\n  \"location\": \"Remote\",\r\n  \"type\": \"FULL_TIME\",\r\n  \"description\": \"Bertanggung jawab mengembangkan frontend menggunakan NextJS.\",\r\n  \"salary\": \"4-5 juta\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/positions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"positions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Position",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYWQwYjJkLTFlZjYtNDM5Yi04OTUwLWZhZjZlNTFjOGU1YSIsInJvbGUiOiJBRE1JTiIsImNvbXBhbnlJZCI6ImY2YmE4Yjk2LWU5ZDMtNDYwOC05YTRiLThjZDg0MDliOGFjNSIsImlhdCI6MTc2ODQ0MzE4NiwiZXhwIjoxNzY4NTI5NTg2fQ.2WzeY4UCoakjF-4-OYnT9LzhAgSVoq5wVzn0HT1065g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/positions?page=1&limit=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"positions"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "First Position",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYWQwYjJkLTFlZjYtNDM5Yi04OTUwLWZhZjZlNTFjOGU1YSIsInJvbGUiOiJBRE1JTiIsImNvbXBhbnlJZCI6ImY2YmE4Yjk2LWU5ZDMtNDYwOC05YTRiLThjZDg0MDliOGFjNSIsImlhdCI6MTc2ODQ0MzE4NiwiZXhwIjoxNzY4NTI5NTg2fQ.2WzeY4UCoakjF-4-OYnT9LzhAgSVoq5wVzn0HT1065g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/positions/55ce1a43-db0b-4ab9-a673-8d749ea6093a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"positions",
+						"55ce1a43-db0b-4ab9-a673-8d749ea6093a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Position",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYWQwYjJkLTFlZjYtNDM5Yi04OTUwLWZhZjZlNTFjOGU1YSIsInJvbGUiOiJBRE1JTiIsImNvbXBhbnlJZCI6ImY2YmE4Yjk2LWU5ZDMtNDYwOC05YTRiLThjZDg0MDliOGFjNSIsImlhdCI6MTc2ODQ0MjIyMCwiZXhwIjoxNzY4NTI4NjIwfQ.rFHT1GxWnX689wtJNnnmo1xE9wsJRb5bl8JreQf6L9k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"isActive\": true,\r\n  \"location\": \"Remote\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/positions/87ea4690-856a-436f-a96c-0ad9354e4da2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"positions",
+						"87ea4690-856a-436f-a96c-0ad9354e4da2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Position",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYWQwYjJkLTFlZjYtNDM5Yi04OTUwLWZhZjZlNTFjOGU1YSIsInJvbGUiOiJBRE1JTiIsImNvbXBhbnlJZCI6ImY2YmE4Yjk2LWU5ZDMtNDYwOC05YTRiLThjZDg0MDliOGFjNSIsImlhdCI6MTc2ODQ0MjIyMCwiZXhwIjoxNzY4NTI4NjIwfQ.rFHT1GxWnX689wtJNnnmo1xE9wsJRb5bl8JreQf6L9k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/positions/87ea4690-856a-436f-a96c-0ad9354e4da2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"positions",
+						"87ea4690-856a-436f-a96c-0ad9354e4da2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apply",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"positionId\": \"55ce1a43-db0b-4ab9-a673-8d749ea6093a\",\r\n  \"fullName\": \"Ahmad Kasim\",\r\n  \"email\": \"ahmadkasim@email.com\",\r\n  \"phone\": \"08123452789\",\r\n  \"education\": \"SMK\",\r\n  \"experience\": 2,\r\n  \"resumeUrl\": \"https://drive.google.com/file/d/xxx\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/applicants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"applicants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Applicant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYWQwYjJkLTFlZjYtNDM5Yi04OTUwLWZhZjZlNTFjOGU1YSIsInJvbGUiOiJBRE1JTiIsImNvbXBhbnlJZCI6ImY2YmE4Yjk2LWU5ZDMtNDYwOC05YTRiLThjZDg0MDliOGFjNSIsImlhdCI6MTc2ODQ0MzE4NiwiZXhwIjoxNzY4NTI5NTg2fQ.2WzeY4UCoakjF-4-OYnT9LzhAgSVoq5wVzn0HT1065g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/applicants?page=2&limit=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"applicants"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "First Applicant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYWQwYjJkLTFlZjYtNDM5Yi04OTUwLWZhZjZlNTFjOGU1YSIsInJvbGUiOiJBRE1JTiIsImNvbXBhbnlJZCI6ImY2YmE4Yjk2LWU5ZDMtNDYwOC05YTRiLThjZDg0MDliOGFjNSIsImlhdCI6MTc2ODQ0MzE4NiwiZXhwIjoxNzY4NTI5NTg2fQ.2WzeY4UCoakjF-4-OYnT9LzhAgSVoq5wVzn0HT1065g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/applicants/56c0ecb3-a532-41e5-80a6-2560f99bf930",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"applicants",
+						"56c0ecb3-a532-41e5-80a6-2560f99bf930"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Applicant Status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYWQwYjJkLTFlZjYtNDM5Yi04OTUwLWZhZjZlNTFjOGU1YSIsInJvbGUiOiJBRE1JTiIsImNvbXBhbnlJZCI6ImY2YmE4Yjk2LWU5ZDMtNDYwOC05YTRiLThjZDg0MDliOGFjNSIsImlhdCI6MTc2ODQ0MzE4NiwiZXhwIjoxNzY4NTI5NTg2fQ.2WzeY4UCoakjF-4-OYnT9LzhAgSVoq5wVzn0HT1065g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"status\": \"INTERVIEW\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/applicants/56c0ecb3-a532-41e5-80a6-2560f99bf930/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"applicants",
+						"56c0ecb3-a532-41e5-80a6-2560f99bf930",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Applicant Notes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYWQwYjJkLTFlZjYtNDM5Yi04OTUwLWZhZjZlNTFjOGU1YSIsInJvbGUiOiJBRE1JTiIsImNvbXBhbnlJZCI6ImY2YmE4Yjk2LWU5ZDMtNDYwOC05YTRiLThjZDg0MDliOGFjNSIsImlhdCI6MTc2ODQ0MzE4NiwiZXhwIjoxNzY4NTI5NTg2fQ.2WzeY4UCoakjF-4-OYnT9LzhAgSVoq5wVzn0HT1065g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"notes\": \"Kandidat bagus, berpengalaman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/applicants/24b6f499-2262-4858-bcc1-0d3009db41cb/notes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"applicants",
+						"24b6f499-2262-4858-bcc1-0d3009db41cb",
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Applicant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYWQwYjJkLTFlZjYtNDM5Yi04OTUwLWZhZjZlNTFjOGU1YSIsInJvbGUiOiJBRE1JTiIsImNvbXBhbnlJZCI6ImY2YmE4Yjk2LWU5ZDMtNDYwOC05YTRiLThjZDg0MDliOGFjNSIsImlhdCI6MTc2ODQ0MzE4NiwiZXhwIjoxNzY4NTI5NTg2fQ.2WzeY4UCoakjF-4-OYnT9LzhAgSVoq5wVzn0HT1065g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/applicants/24b6f499-2262-4858-bcc1-0d3009db41cb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"applicants",
+						"24b6f499-2262-4858-bcc1-0d3009db41cb"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

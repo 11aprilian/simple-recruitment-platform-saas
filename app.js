@@ -6,18 +6,14 @@ const db = require("./models");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-/* =====================
-   MIDDLEWARE
-===================== */
+//middlewares
 app.use(express.json());
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/users', require('./routes/user.routes'))
 app.use('/api/positions', require('./routes/position.routes'))
 app.use('/api/applicants', require('./routes/applicant.routes'))
 
-/* =====================
-   HEALTH CHECK
-===================== */
+//health check
 app.get("/health", (req, res) => {
   res.json({
     status: "OK",

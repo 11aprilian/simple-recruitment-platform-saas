@@ -1,4 +1,4 @@
-const db = require('../models')
+const db = require("../models");
 
 //public apply
 exports.apply = async (req, res, next) => {
@@ -11,15 +11,15 @@ exports.apply = async (req, res, next) => {
       education,
       experience,
       resumeUrl,
-    } = req.body
+    } = req.body;
 
     // position must be active
     const position = await db.Position.findOne({
       where: { id: positionId, isActive: true },
-    })
+    });
 
     if (!position) {
-      return res.status(404).json({ message: 'Position not found' })
+      return res.status(404).json({ message: "Position not found" });
     }
 
     const applicant = await db.Applicant.create({
@@ -30,37 +30,54 @@ exports.apply = async (req, res, next) => {
       education,
       experience,
       resumeUrl,
-      status: 'APPLIED',
-    })
+      status: "APPLIED",
+    });
 
-    res.status(201).json(applicant)
+    res.status(201).json(applicant);
   } catch (err) {
-    next(err)
+    next(err);
   }
-}
+};
 
 //get applicants
 exports.findAll = async (req, res, next) => {
   try {
-    const wherePosition = { companyId: req.user.companyId }
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const offset = (page - 1) * limit;
+
+    const wherePosition = {
+      companyId: req.user.companyId,
+    };
+
     if (req.query.positionId) {
-      wherePosition.id = req.query.positionId
+      wherePosition.id = req.query.positionId;
     }
 
-    const applicants = await db.Applicant.findAll({
+    const { rows, count } = await db.Applicant.findAndCountAll({
+      limit,
+      offset,
       include: {
         model: db.Position,
         where: wherePosition,
-        attributes: ['id', 'title'],
+        attributes: ["id", "title"],
       },
-      order: [['createdAt', 'DESC']],
-    })
+      order: [["createdAt", "DESC"]],
+    });
 
-    res.json(applicants)
+    res.json({
+      data: rows,
+      meta: {
+        page,
+        limit,
+        totalItems: count,
+        totalPages: Math.ceil(count / limit),
+      },
+    });
   } catch (err) {
-    next(err)
+    next(err);
   }
-}
+};
 
 //applicants detail
 exports.findOne = async (req, res, next) => {
@@ -70,24 +87,24 @@ exports.findOne = async (req, res, next) => {
       include: {
         model: db.Position,
         where: { companyId: req.user.companyId },
-        attributes: ['id', 'title'],
+        attributes: ["id", "title"],
       },
-    })
+    });
 
     if (!applicant) {
-      return res.status(404).json({ message: 'Applicant not found' })
+      return res.status(404).json({ message: "Applicant not found" });
     }
 
-    res.json(applicant)
+    res.json(applicant);
   } catch (err) {
-    next(err)
+    next(err);
   }
-}
+};
 
 //update applicants status
 exports.updateStatus = async (req, res, next) => {
   try {
-    const { status } = req.body
+    const { status } = req.body;
 
     const applicant = await db.Applicant.findOne({
       where: { id: req.params.id },
@@ -95,23 +112,23 @@ exports.updateStatus = async (req, res, next) => {
         model: db.Position,
         where: { companyId: req.user.companyId },
       },
-    })
+    });
 
     if (!applicant) {
-      return res.status(404).json({ message: 'Applicant not found' })
+      return res.status(404).json({ message: "Applicant not found" });
     }
 
-    await applicant.update({ status })
-    res.json(applicant)
+    await applicant.update({ status });
+    res.json(applicant);
   } catch (err) {
-    next(err)
+    next(err);
   }
-}
+};
 
 //update applicants notes
 exports.updateNotes = async (req, res, next) => {
   try {
-    const { notes } = req.body
+    const { notes } = req.body;
 
     const applicant = await db.Applicant.findOne({
       where: { id: req.params.id },
@@ -119,18 +136,18 @@ exports.updateNotes = async (req, res, next) => {
         model: db.Position,
         where: { companyId: req.user.companyId },
       },
-    })
+    });
 
     if (!applicant) {
-      return res.status(404).json({ message: 'Applicant not found' })
+      return res.status(404).json({ message: "Applicant not found" });
     }
 
-    await applicant.update({ notes })
-    res.json(applicant)
+    await applicant.update({ notes });
+    res.json(applicant);
   } catch (err) {
-    next(err)
+    next(err);
   }
-}
+};
 
 //delete applicants
 exports.remove = async (req, res, next) => {
@@ -141,15 +158,15 @@ exports.remove = async (req, res, next) => {
         model: db.Position,
         where: { companyId: req.user.companyId },
       },
-    })
+    });
 
     if (!applicant) {
-      return res.status(404).json({ message: 'Applicant not found' })
+      return res.status(404).json({ message: "Applicant not found" });
     }
 
-    await applicant.destroy()
-    res.json({ message: 'Applicant deleted' })
+    await applicant.destroy();
+    res.json({ message: "Applicant deleted" });
   } catch (err) {
-    next(err)
+    next(err);
   }
-}
+};

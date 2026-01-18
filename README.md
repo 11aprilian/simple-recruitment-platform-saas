@@ -53,6 +53,7 @@ npm install
 
 ```bash
 PORT=3000
+NODE_ENV=development
 
 DB_HOST=localhost
 DB_PORT=5432
@@ -87,10 +88,16 @@ npm run dev
 npm run start
 ```
 
-Saat server pertama kali dijalankan, Sequelize akan otomatis melakukan:
+Saat server dijalankan di dev, Sequelize akan otomatis melakukan:
 
 ```bash
 sequelize.sync()
+```
+
+Saat server dijalankan di prod, migrations:
+
+```bash
+npx sequelize-cli db:migrate
 ```
 
 Server berjalan di:

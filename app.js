@@ -26,10 +26,10 @@ const startServer = async () => {
     await sequelize.authenticate();
     console.log("Database connected");
 
-    console.log("Loaded models:", Object.keys(db));
-
-    await db.sequelize.sync({ alter: true });
-    console.log("Database synced");
+    if (process.env.NODE_ENV === 'development') {
+      await db.sequelize.sync({ alter: true });
+      console.log("Database synced (DEV)");
+    }
 
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
@@ -39,6 +39,7 @@ const startServer = async () => {
     process.exit(1);
   }
 };
+
 
 startServer();
 

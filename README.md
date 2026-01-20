@@ -71,9 +71,6 @@ JWT_SECRET=<your_magic_word>
 CREATE DATABASE recruitment_db;
 ```
 
-Project ini tidak menggunakan migration.
-Struktur tabel akan dibuat otomatis menggunakan Sequelize sync() saat aplikasi dijalankan pertama kali.
-
 ## ▶️ How to Run
 
 ### Development Mode
